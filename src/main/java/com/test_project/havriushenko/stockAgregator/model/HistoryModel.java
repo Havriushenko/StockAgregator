@@ -1,8 +1,11 @@
 package com.test_project.havriushenko.stockAgregator.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
+@Data
 public class HistoryModel {
 
     @Id

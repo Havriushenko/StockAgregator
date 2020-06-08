@@ -5,121 +5,121 @@ import lombok.Data;
 import javax.persistence.*;
 import java.math.BigInteger;
 
-@Entity
+@Entity(name = "quote")
 @Data
 public class QuoteModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(length = 100)
+    @Column(name = "symbol", length = 100)
     private String symbol;
-    @Column(length = 200)
+    @Column(name = "company_name", length = 200)
     private String companyName;
-    @Column(length = 200)
+    @Column(name = "calculation_price", length = 200)
     private String calculationPrice;
-    @Column
+    @Column(name = "open")
     private double open;
-    @Column
+    @Column(name = "open_time")
     private BigInteger openTime;
-    @Column(length = 200)
+    @Column(name = "open_source", length = 200)
     private String openSource;
-    @Column
+    @Column(name = "close")
     private double close;
-    @Column
+    @Column(name = "close_time")
     private double closeTime;
-    @Column(length = 200)
+    @Column(name = "close_source", length = 200)
     private String closeSource;
-    @Column
+    @Column(name = "high")
     private double high;
-    @Column
+    @Column(name = "high_time")
     private BigInteger highTime;
-    @Column(length = 500)
+    @Column(name = "high_source", length = 500)
     private String highSource;
-    @Column
+    @Column(name = "low")
     private double low;
-    @Column
+    @Column(name = "low_time")
     private BigInteger lowTime;
-    @Column(length = 500)
+    @Column(name = "low_source", length = 500)
     private String lowSource;
-    @Column
+    @Column(name = "latest_price")
     private int latestPrice;
-    @Column(length = 100)
+    @Column(name = "latest_source", length = 100)
     private String latestSource;
-    @Column(length = 200)
+    @Column(name = "latest_time", length = 200)
     private String latestTime;
-    @Column
+    @Column(name = "latest_update")
     private BigInteger latestUpdate;
-    @Column
+    @Column(name = "latest_volume")
     private int latestVolume;
-    @Column(length = 200)
+    @Column(name = "iex_realtime_price", length = 200)
     private String iexRealtimePrice;
-    @Column(length = 200)
+    @Column(name = "iex_realtime_size", length = 200)
     private String iexRealtimeSize;
-    @Column(length = 200)
+    @Column(name = "iex_last_updated", length = 200)
     private String iexLastUpdated;
-    @Column(length = 200)
+    @Column(name = "primary_exchange", length = 200)
     private String primaryExchange;
-    @Column
+    @Column(name = "delayed_price")
     private double delayedPrice;
-    @Column
+    @Column(name = "delayed_price_time")
     private BigInteger delayedPriceTime;
-    @Column
+    @Column(name = "odd_lot_delayed_price")
     private double oddLotDelayedPrice;
-    @Column
+    @Column(name = "odd_lot_delayed_price_time")
     private BigInteger oddLotDelayedPriceTime;
-    @Column
+    @Column(name = "extended_price")
     private double extendedPrice;
-    @Column
+    @Column(name = "extended_change")
     private int extendedChange;
-    @Column
+    @Column(name = "extended_change_percent")
     private int extendedChangePercent;
-    @Column
+    @Column(name = "extended_price_time")
     private BigInteger extendedPriceTime;
-    @Column
+    @Column(name = "previous_close")
     private double previousClose;
-    @Column
+    @Column(name = "previous_volume")
     private int previousVolume;
-    @Column
+    @Column(name = "change")
     private double change;
-    @Column
+    @Column(name = "change_percent")
     private double changePercent;
-    @Column
+    @Column(name = "volume")
     private int volume;
-    @Column
+    @Column(name = "iex_market_percent")
     private double iexMarketPercent;
-    @Column
+    @Column(name = "iex_volume")
     private double iexVolume;
-    @Column
+    @Column(name = "avg_total_volume")
     private int avgTotalVolume;
-    @Column
+    @Column(name = "iex_bid_price")
     private double iexBidPrice;
-    @Column
+    @Column(name = "iex_bid_size")
     private double iexBidSize;
-    @Column
+    @Column(name = "iex_ask_price")
     private double iexAskPrice;
-    @Column
+    @Column(name = "iex_ask_size")
     private double iexAskSize;
-    @Column
+    @Column(name = "iex_open")
     private double iexOpen;
-    @Column
+    @Column(name = "iex_open_time")
     private double iexOpenTime;
-    @Column
+    @Column(name = "iex_close")
     private double iexClose;
-    @Column
+    @Column(name = "iex_close_time")
     private BigInteger iexCloseTime;
-    @Column
+    @Column(name = "market_cap")
     private BigInteger marketCap;
-    @Column
+    @Column(name = "pe_ratio")
     private double peRatio;
-    @Column
+    @Column(name = "week52_high")
     private double week52High;
-    @Column
+    @Column(name = "week52_low")
     private double week52Low;
-    @Column
+    @Column(name = "ytd_change")
     private double ytdChange;
-    @Column
+    @Column(name = "last_trade_time")
     private double lastTradeTime;
-    @Column
+    @Column(name = "is_us_market_open")
     private boolean isUSMarketOpen;
 }

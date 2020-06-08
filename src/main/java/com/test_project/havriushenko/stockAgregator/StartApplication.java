@@ -14,12 +14,15 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients
 public class StartApplication implements CommandLineRunner {
 
+    @Autowired
+    private Runner runner;
+
     public static void main(String... args) {
         SpringApplication.run(StartApplication.class, args);
     }
 
     @Override
     public void run(String... args) throws Exception {
-
+        runner.run();
     }
 }

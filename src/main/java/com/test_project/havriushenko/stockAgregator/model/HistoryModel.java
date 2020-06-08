@@ -4,14 +4,14 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "history")
 @Data
 public class HistoryModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @ManyToOne
+//    @ManyToOne
     private int id_company;
     @Column(name = "field_name", length = 200)
     private String fieldName;

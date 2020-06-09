@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class Runner {
@@ -18,14 +21,34 @@ public class Runner {
     private SymbolRepository symbolRepository;
     @Autowired
     private QuoteRepository quoteRepository;
+    @Autowired
+    private HistoryService historyService;
 
     public void run() throws InterruptedException {
         List<Symbol> symbols = symbolRepository.getSymbols();
-        ExecutorService executorService = Executors.newFixedThreadPool(4);
-        symbols.stream().limit(10).forEach(value -> executorService.submit(() -> {
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
+        symbols.forEach(value -> executorService.submit(() -> {
             QuoteModel quote = symbolRepository.getQuote(value.getSymbol());
+            Optional<QuoteModel> quoteModel = quoteRepository.findBySymbol(quote.getSymbol());
+
+            if (quoteModel.isPresent()) {
+                historyService.comparisonQuote(quote, quoteModel.get());
+                quote.setId(quoteModel.get().getId());
+            }
             quoteRepository.save(quote);
         }));
-        executorService.shutdown();
+
+        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
+        scheduledExecutorService.scheduleAtFixedRate(() -> {
+            StringBuilder top5 = new StringBuilder("TOP 5 Quote:");
+            quoteRepository.findAllOrderByLatestPriceTopFive().forEach(quote -> {
+                top5.append(printQuote(quote) + "\n");
+            });
+            System.out.println(top5);
+        }, 30, 5, TimeUnit.SECONDS);
+    }
+
+    private String printQuote(QuoteModel quote) {
+        return " " + quote + ",";
     }
 }

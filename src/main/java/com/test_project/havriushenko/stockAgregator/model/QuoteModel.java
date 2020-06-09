@@ -5,8 +5,9 @@ import lombok.Data;
 import javax.persistence.*;
 import java.math.BigInteger;
 
-@Entity(name = "quote")
+@Entity
 @Data
+@Table(name = "quote")
 public class QuoteModel {
 
     @Id
@@ -21,25 +22,25 @@ public class QuoteModel {
     @Column(name = "open")
     private double open;
     @Column(name = "open_time")
-    private BigInteger openTime;
+    private Long openTime;
     @Column(name = "open_source", length = 200)
     private String openSource;
     @Column(name = "close")
     private double close;
     @Column(name = "close_time")
-    private double closeTime;
+    private Long closeTime;
     @Column(name = "close_source", length = 200)
     private String closeSource;
     @Column(name = "high")
     private double high;
     @Column(name = "high_time")
-    private BigInteger highTime;
+    private Long highTime;
     @Column(name = "high_source", length = 500)
     private String highSource;
     @Column(name = "low")
     private double low;
     @Column(name = "low_time")
-    private BigInteger lowTime;
+    private Long lowTime;
     @Column(name = "low_source", length = 500)
     private String lowSource;
     @Column(name = "latest_price")
@@ -63,11 +64,11 @@ public class QuoteModel {
     @Column(name = "delayed_price")
     private double delayedPrice;
     @Column(name = "delayed_price_time")
-    private BigInteger delayedPriceTime;
+    private Long delayedPriceTime;
     @Column(name = "odd_lot_delayed_price")
     private double oddLotDelayedPrice;
     @Column(name = "odd_lot_delayed_price_time")
-    private BigInteger oddLotDelayedPriceTime;
+    private Long oddLotDelayedPriceTime;
     @Column(name = "extended_price")
     private double extendedPrice;
     @Column(name = "extended_change")
@@ -75,13 +76,13 @@ public class QuoteModel {
     @Column(name = "extended_change_percent")
     private int extendedChangePercent;
     @Column(name = "extended_price_time")
-    private BigInteger extendedPriceTime;
+    private Long extendedPriceTime;
     @Column(name = "previous_close")
     private double previousClose;
     @Column(name = "previous_volume")
     private int previousVolume;
     @Column(name = "change")
-    private double change;
+    private Double change;
     @Column(name = "change_percent")
     private double changePercent;
     @Column(name = "volume")
@@ -103,11 +104,11 @@ public class QuoteModel {
     @Column(name = "iex_open")
     private double iexOpen;
     @Column(name = "iex_open_time")
-    private double iexOpenTime;
+    private Long iexOpenTime;
     @Column(name = "iex_close")
     private double iexClose;
     @Column(name = "iex_close_time")
-    private BigInteger iexCloseTime;
+    private Long iexCloseTime;
     @Column(name = "market_cap")
     private BigInteger marketCap;
     @Column(name = "pe_ratio")
@@ -119,7 +120,7 @@ public class QuoteModel {
     @Column(name = "ytd_change")
     private double ytdChange;
     @Column(name = "last_trade_time")
-    private double lastTradeTime;
+    private Long lastTradeTime;
     @Column(name = "is_us_market_open")
     private boolean isUSMarketOpen;
 }
